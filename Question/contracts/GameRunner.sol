@@ -9,10 +9,11 @@ contract GameRunner {
       game.setup();
       game.play(10);
     }
-        
+
     function runComplex() external {
-      //ComplexGame game = new ComplexGame(); 
-      //todo: Put your code here.
+        ComplexGame game = new ComplexGame();
+        game.setup();
+        game.play(10);
     }
 }
  

@@ -33,7 +33,7 @@
     "typescript": "^4.4.3"
   },
   "license": "MIT",
-  "dependencies": { 
+  "dependencies": {
     "@openzeppelin/contracts": "4.3.1"
   }
 }

@@ -10,7 +10,7 @@ contract KnightMove {
  
     SystemTypes.Diff[] private Moves;
 
-    constructor(){ 
+    constructor(){
        Moves.push(SystemTypes.Diff(1,2));
        Moves.push(SystemTypes.Diff(1, -2));
        Moves.push(SystemTypes.Diff(-1, 2));

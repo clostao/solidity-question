@@ -16,8 +16,8 @@ contract SimpleGame is IGame {
         for (uint i = 0; i < _moves; i++) {
             SystemTypes.Position[] memory possibles = knight.validMovesFor(currentPosition);
             uint r = Randomizer.random(possibles.length) % possibles.length; 
-            currentPosition = possibles[r]; 
-            console.log("%d: My Position is (%d,%d)", i, currentPosition.X, currentPosition.Y); 
+            currentPosition = possibles[r];
+            console.log("%d: My Position is (%d,%d)", i, currentPosition.X, currentPosition.Y);
         }
     }
     

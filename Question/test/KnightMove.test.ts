@@ -6,8 +6,7 @@ import { Contract } from "@ethersproject/contracts";
 describe("KnightMove", function () { 
   let knightMove: Contract;
   before(async function () {
-     
-    const KnightMove = await ethers.getContractFactory("KnightMove" );
+    const KnightMove = await ethers.getContractFactory("KnightMove");
     knightMove = await KnightMove.deploy(); 
   });
 

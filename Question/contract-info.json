@@ -1,0 +1,10 @@
+{
+  "ComplexGame": {
+    "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+    "transactionHash": "0x0980fd2cf555d52c61ea0b479a92e682ed29643957909e5949eb20279e1314f6"
+  },
+  "SimpleGame": {
+    "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "transactionHash": "0xee0c7785355ec03f1de302cf54cea034b4b42e802b94e6df75708e2773ec952f"
+  }
+}

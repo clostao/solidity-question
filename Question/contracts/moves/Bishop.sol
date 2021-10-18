@@ -1,41 +1,57 @@
+//SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "..\interfaces\IMove.sol";
-import "..\libraries\SystemTypes.sol";
+import "../interfaces/IMove.sol";
+import "../libraries/SystemTypes.sol";
+import "../cores/BoardTypes.sol";
 
 contract Bishop is IMove {
 
     constructor() { }
 
-    function validMovesFor(SystemTypes.Position memory _position, SystemTypes.Position[] memory _occupied_positions) public view returns (SystemTypes.Position[] memory) {
+    function validMovesFor(SystemTypes.Position memory _position) public override pure returns (SystemTypes.Position[] memory) {
         uint count = 0;
-        for (uint i = 0; i < 8; i++) {
-            if (isInBoundaries(_position.X + i, _position.Y + i)) count++;
-            if (isInBoundaries(_position.X + i, _position.Y - i)) count++;
-            if (isInBoundaries(_position.X - i, _position.Y + i)) count++;
-            if (isInBoundaries(_position.X - i, _position.Y - i)) count++;
+        bool stop = false;
+        for (uint i = 1; i < 8 && !stop; i++) {
+            stop = true;
+            if (_position.X + i <= 8 && _position.Y + i <= 8) {
+                stop = false;
+                count++;
+            }
+            if (_position.Y  >i && _position.X + i <= 8) {
+                stop = false;
+                count++;
+            }
+            if (_position.X > i && _position.Y + i <= 8) {
+                stop = false;
+                count++;
+            }
+            if (_position.X > i && _position.Y > i) {
+                stop = false;
+                count++;
+            }
         }
         uint j = 0;
-        SystemTypes.Position[] validMoves = SystemTypes.Position[](count);
-        for (uint i = 0; i < 8; i++) {
-            if (isInBoundaries(_position.X + i, _position.Y + i)) {
+        SystemTypes.Position[] memory validMoves = new SystemTypes.Position[](count);
+        for (uint i = 1; i < 8; i++) {
+            if (_position.X + i <= 8 && _position.Y + i <= 8) {
                 validMoves[j] = SystemTypes.Position(_position.X + i, _position.X + i);
                 j++;
             }
-            if (isInBoundaries(_position.X + i, _position.Y - i)) {
+            if (_position.Y > i && _position.X + i <= 8) {
                 validMoves[j] = SystemTypes.Position(_position.X + i, _position.Y - i);
                 j++;
             }
-            if (isInBoundaries(_position.X - i, _position.Y + i)) {
+            if (_position.X > i && _position.Y + i <= 8) {
                 validMoves[j] = SystemTypes.Position(_position.X - i, _position.Y + i);
                 j++;
             }
-            if (isInBoundaries(_position.X - i, _position.Y - i)) {
+            if (_position.X > i && _position.Y > i) {
                 validMoves[j] = SystemTypes.Position(_position.X - i, _position.Y - i);
                 j++;
             }
         }
-        return super.discardOccupiedMoves(validMoves, _occupied_positions);
+        return validMoves;
     }
 
 }

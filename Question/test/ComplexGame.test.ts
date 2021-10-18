@@ -27,4 +27,11 @@ describe("Bishop", function () {
         await complexGameInstance.setup();
         await complexGameInstance.play(10);
     });
+    it('Complex Game: Add a wrong piece to contract', async function () {
+        await complexGameInstance.setup();
+        await complexGameInstance.play(2);
+        await complexGameInstance.addNewPiece(complexGameInstance.address, 1, 4);
+        await complexGameInstance.setup();
+        expect(await complexGameInstance.play(10).then(() => false).catch(() => true), "Add wrong piece should have failed.");
+    });
 });

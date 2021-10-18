@@ -18,7 +18,7 @@ contract Bishop is IMove {
                 stop = false;
                 count++;
             }
-            if (_position.Y  >i && _position.X + i <= 8) {
+            if (_position.Y > i && _position.X + i <= 8) {
                 stop = false;
                 count++;
             }
@@ -35,7 +35,7 @@ contract Bishop is IMove {
         SystemTypes.Position[] memory validMoves = new SystemTypes.Position[](count);
         for (uint i = 1; i < 8; i++) {
             if (_position.X + i <= 8 && _position.Y + i <= 8) {
-                validMoves[j] = SystemTypes.Position(_position.X + i, _position.X + i);
+                validMoves[j] = SystemTypes.Position(_position.X + i, _position.Y + i);
                 j++;
             }
             if (_position.Y > i && _position.X + i <= 8) {

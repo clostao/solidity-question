@@ -46,9 +46,11 @@ contract ComplexGame is IGame {
              indexPosition = (indexPosition == 0) ? (pieces.length - 1) : (indexPosition - 1);
              require(pos.X != IMPOSSIBLE_POSITION, "There are no possible movements.");
              occupied_positions[pieces[indexPosition].position.Y][pieces[indexPosition].position.X] = false;
+             console.log("Piece with index %d moves from (%d,%d)", indexPosition, pieces[indexPosition].position.X, pieces[indexPosition].position.Y);
+             console.log("to (%d,%d)", pos.X, pos.Y);
              pieces[indexPosition].position = pos;
              occupied_positions[pieces[indexPosition].position.Y][pieces[indexPosition].position.X] = true;
-             console.log("Piece with index: %d", indexPosition);
+             //console.log("Piece with index: %d", indexPosition);
              //console.log("Piece with index %d is (%d,%d)", 0, pieces[0].position.X, pieces[0].position.Y);
              //console.log("Piece with index %d is (%d,%d)", 1, pieces[1].position.X, pieces[1].position.Y);
              //console.log("Piece with index %d is (%d,%d)", 2, pieces[2].position.X, pieces[2].position.Y);
